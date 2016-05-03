@@ -5,8 +5,14 @@ QUnit.module("GameTesting", {
 });
 
 QUnit.test("Scissors loses to rock", function(assert) {
-    var result =  Object.keys(this.game.moves).length;
-    assert.deepEqual(result, 3, "Length of moves should be equal to 3");
+  var result = [], prop, i;
+  for (prop in this.moves) {
+    if (this.game.moves.hasOwnProperty.call(this.moves, prop)) {
+      result.push(prop);
+    }
+  }
+  var resultLength = result.length;
+  assert.deepEqual(resultLength, 3, "Length of moves should be equal to 3");
 });
 
 QUnit.test("Rock loses to paper", function(assert) {
